@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SendMailModule } from './modules/mails/send-mail.module';
 import { SponsorModule } from './modules/sponsor/sponsor.module';
 import { MailModule } from './shared/providers/mailer/mailer.module';
+import { OccupationModule } from './modules/occupation/occupation.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { MailModule } from './shared/providers/mailer/mailer.module';
     MailModule,
     SponsorModule,
     SendMailModule,
+    OccupationModule,
   ],
   providers: [],
 })
