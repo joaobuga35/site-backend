@@ -29,8 +29,12 @@ export class OccupationPrismaRepository implements OccupationRepository {
     );
   }
   async findOne(id: string): Promise<Occupation> {
-    throw new Error('Method not implemented.');
+    const occupation = await this.prismaService.occupation.findUnique({
+      where: { id },
+    });
+    return plainToInstance(Occupation, occupation);
   }
+
   async findByEmail(email: string): Promise<Occupation> {
     throw new Error('Method not implemented.');
   }

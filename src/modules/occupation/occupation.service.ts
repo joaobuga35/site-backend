@@ -8,8 +8,8 @@ import { Occupation } from './entities/occupation.entity';
 export class OccupationService {
   constructor(private occupationRepository: OccupationRepository) {}
 
-  async create(createOccupationDto: CreateOccupationDto) {
-    return await this.occupationRepository.create(createOccupationDto);
+  create(createOccupationDto: CreateOccupationDto) {
+    return this.occupationRepository.create(createOccupationDto);
   }
 
   findAll() {
@@ -17,7 +17,7 @@ export class OccupationService {
   }
 
   findOne(id: string) {
-    return `This action returns a #${id} occupation`;
+    return this.occupationRepository.findOne(id);
   }
 
   update(id: string, updateOccupationDto: UpdateOccupationDto) {
