@@ -35,9 +35,6 @@ export class OccupationPrismaRepository implements OccupationRepository {
     return plainToInstance(Occupation, occupation);
   }
 
-  async findByEmail(email: string): Promise<Occupation> {
-    throw new Error('Method not implemented.');
-  }
   async update(id: string, data: UpdateOccupationDto): Promise<Occupation> {
     throw new Error('Method not implemented.');
   }
