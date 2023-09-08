@@ -11,12 +11,11 @@ datasource db {
 }
 
 model Occupation {
-  id         String   @id @default(uuid()) @map("id") @db.Uuid
+  id         String  @id @default(uuid()) @map("id") @db.Uuid
   name       String
   office     String
   image      String?
   linkedin   String?
   discord    String?
-  created_at DateTime @default(now()) @map("created_at") @db.Timestamp(6)
-  updated_at DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
+  created_at String
 }

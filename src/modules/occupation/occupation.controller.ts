@@ -16,8 +16,8 @@ export class OccupationController {
   constructor(private readonly occupationService: OccupationService) {}
 
   @Post()
-  create(@Body() createOccupationDto: CreateOccupationDto) {
-    return this.occupationService.create(createOccupationDto);
+  async create(@Body() createOccupationDto: CreateOccupationDto) {
+    return await this.occupationService.create(createOccupationDto);
   }
 
   @Get()
@@ -27,7 +27,7 @@ export class OccupationController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.occupationService.findOne(+id);
+    return this.occupationService.findOne(id);
   }
 
   @Patch(':id')
@@ -35,11 +35,11 @@ export class OccupationController {
     @Param('id') id: string,
     @Body() updateOccupationDto: UpdateOccupationDto,
   ) {
-    return this.occupationService.update(+id, updateOccupationDto);
+    return this.occupationService.update(id, updateOccupationDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.occupationService.remove(+id);
+    return this.occupationService.remove(id);
   }
 }
