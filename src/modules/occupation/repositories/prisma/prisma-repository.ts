@@ -14,11 +14,9 @@ export class OccupationPrismaRepository implements OccupationRepository {
     const occupation = new Occupation();
 
     Object.assign(occupation, { ...data });
-    console.log(occupation);
     const newOccupation = await this.prismaService.occupation.create({
       data: { ...occupation },
     });
-    console.log(newOccupation);
 
     return plainToInstance(Occupation, newOccupation);
   }
@@ -36,9 +34,15 @@ export class OccupationPrismaRepository implements OccupationRepository {
   }
 
   async update(id: string, data: UpdateOccupationDto): Promise<Occupation> {
-    throw new Error('Method not implemented.');
+    const occupationUser = await this.prismaService.occupation.update({
+      where: {
+        id,
+      },
+      data: { ...data },
+    });
+    return plainToInstance(Occupation, occupationUser);
   }
   async delete(id: string): Promise<void> {
-    throw new Error('Method not implemented.');
+    await this.prismaService.occupation.delete({ where: { id } });
   }
 }

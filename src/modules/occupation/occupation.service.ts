@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateOccupationDto } from './dto/create-occupation.dto';
 import { UpdateOccupationDto } from './dto/update-occupation.dto';
 import { OccupationRepository } from './repositories/occupation-repository';
-import { Occupation } from './entities/occupation.entity';
 
 @Injectable()
 export class OccupationService {
@@ -21,10 +20,10 @@ export class OccupationService {
   }
 
   update(id: string, updateOccupationDto: UpdateOccupationDto) {
-    return `This action updates a #${id} occupation`;
+    return this.occupationRepository.update(id, updateOccupationDto);
   }
 
   remove(id: string) {
-    return `This action removes a #${id} occupation`;
+    return this.occupationRepository.delete(id);
   }
 }
