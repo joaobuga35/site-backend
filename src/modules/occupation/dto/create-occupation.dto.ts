@@ -9,6 +9,10 @@ export class CreateOccupationDto {
   @IsNotEmpty()
   office: string;
 
+  @IsString()
+  @IsNotEmpty()
+  image: string;
+
   @IsOptional()
   @IsString()
   linkedin?: string;
