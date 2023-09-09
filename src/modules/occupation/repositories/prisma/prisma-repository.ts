@@ -28,9 +28,10 @@ export class OccupationPrismaRepository implements OccupationRepository {
   }
   async findOne(id: string): Promise<Occupation> {
     const occupation = await this.prismaService.occupation.findUnique({
-      where: { id },
+      where: { id: id },
     });
-    return plainToInstance(Occupation, occupation);
+
+    return occupation;
   }
 
   async update(id: string, data: UpdateOccupationDto): Promise<Occupation> {

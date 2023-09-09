@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  HttpCode,
 } from '@nestjs/common';
 import { OccupationService } from './occupation.service';
 import { CreateOccupationDto } from './dto/create-occupation.dto';
@@ -38,6 +39,7 @@ export class OccupationController {
     return this.occupationService.update(id, updateOccupationDto);
   }
 
+  @HttpCode(204)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.occupationService.remove(id);

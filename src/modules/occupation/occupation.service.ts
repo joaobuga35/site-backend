@@ -1,7 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateOccupationDto } from './dto/create-occupation.dto';
 import { UpdateOccupationDto } from './dto/update-occupation.dto';
 import { OccupationRepository } from './repositories/occupation-repository';
+import { notFound } from 'src/shared/helpers/http-helper';
+import { CustomError } from 'src/shared/errors/custom-error';
 
 @Injectable()
 export class OccupationService {
@@ -15,8 +17,12 @@ export class OccupationService {
     return this.occupationRepository.findAll();
   }
 
-  findOne(id: string) {
-    return this.occupationRepository.findOne(id);
+  async findOne(id: string) {
+    const occupation = await this.occupationRepository.findOne(id);
+    if (!occupation) {
+      return { oi: 'oi' };
+    }
+    return occupation;
   }
 
   update(id: string, updateOccupationDto: UpdateOccupationDto) {
